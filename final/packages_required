@@ -1,9 +1,0 @@
-FRONT END
-Tkinter
-nltk
-wikipedia
-
-
-IMAGE_TEXT
-apt-get tesseract-ocr
-pip pytesseract
