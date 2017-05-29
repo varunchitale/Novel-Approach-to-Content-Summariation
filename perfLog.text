@@ -1,0 +1,26 @@
+Evaluation Results
+
+Input length: 28280
+Reduction Ratio: 15
+Similarity: 83.36
+Time(for TR): 7.47 
+Time(for PA): 1.31 
+
+
+Input length: 802
+Reduction Ratio: 26
+Similarity: 71.57
+Time(for TR): 0.06 
+Time(for PA): 0.01 
+
+Input length: 33130
+Reduction Ratio: 26
+Similarity: 43.14
+Time(for TR): 10.03 
+Time(for PA): 1.88 
+
+Input length: 37325
+Reduction Ratio: 50
+Similarity: 69.42
+Time(for TR): 10.44 
+Time(for PA): 1.85 
