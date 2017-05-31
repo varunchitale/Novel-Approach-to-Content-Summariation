@@ -38,28 +38,25 @@ def freshWindow(): #clear GUI
 	opEntry.delete(1.0,END)
 	logLabel.pack_forget()
 	buttonClear.pack_forget()
+	
+
+def packIP(): #pack input area
 	ipLabel.pack()
 	ipEntry.pack()
+	ipEntry.delete(1.0, END)
 	buttonSummary.pack()
 	opLabel.pack()
 	opEntry.pack()
 	buttonClear.pack()
 	opEntry.insert(INSERT, "Enter input first.")
 	opEntry.config(state='disabled', fg='#404247', bg='#c8cace')
-
-def packIP(): #pack input area
-	ipLabel.pack()
-	ipEntry.pack()
-	buttonSummary.pack()
-	ipEntry.delete(1.0, END)
+	
 
 def openLog(): #display Log
 		freshWindow()
 		logLabel.pack()
 		ipEntry.pack()
 		ipEntry.delete(1.0,END)
-		opLabel.pack_forget()
-		opEntry.pack_forget()
 		with open("log.txt") as f:
 			ipEntry.insert(INSERT,f.read())
 			
@@ -119,11 +116,13 @@ def getFile(): #import text file
 
 def wikiSearch(): #search wiki
 	freshWindow()
+	buttonSummary.pack_forget()
 	searchTerm = wSearchEntry.get("1.0", END)
 	result = wikipedia.page(searchTerm)
 	packIP()
 	ipEntry.insert(INSERT, result.summary)
 	buttonWiki.pack_forget()
+	buttonClear.pack_forget()
 
 def getInput2(): #wikipedia search entry
 	freshWindow()
@@ -169,6 +168,7 @@ def getInput5(): #web search
 	buttonWeb.pack()
 	
 def displayWeb(): #paste web search to ip box
+	buttonClear.pack_forget()
 	packIP()
 	searchTerm = wSearchEntry.get("1.0", END)
 	text = requests.get(searchTerm.strip()).text
@@ -176,11 +176,22 @@ def displayWeb(): #paste web search to ip box
 	ipEntry.insert(INSERT,"Loading...")
 	ipEntry.delete(1.0, END)
 	ipEntry.insert(INSERT, text.strip())
+	wikiQLabel.pack_forget()
+	wSearchEntry.pack_forget()
 	buttonWiki.pack_forget()
-	
+	buttonWeb.pack_forget()
+	buttonClear.pack()
+
 def getSummary(): #actually calculate summary
+	opLabel.pack_forget()
+	opEntry.pack_forget()
+	buttonSummary.pack_forget()
+	wordCountEntry.pack()
+	buttonClear.pack_forget()
+	buttonSummary.pack()
 	opLabel.pack()
 	opEntry.pack()
+	buttonClear.pack()
 	opEntry.config(state='normal' , bg="white" , fg="black")
 	opEntry.delete(1.0,END)
 	opEntry.insert(INSERT,"Generating Summary...")
@@ -191,6 +202,13 @@ def getSummary(): #actually calculate summary
 	startTime = time.time()
 	text = ipEntry.get("1.0", END)
 	
+	temp = str(len(text))
+	temp=temp+' characters'
+	#print temp
+	#wordCountEntry.insert(INSERT, temp)
+	wordCountEntry.config(text=temp)
+	wordCountEntry.config(state='disabled')
+
 	ps = PorterStemmer()
 	red_ra=redRatio.get()/100.00
 	
@@ -249,12 +267,7 @@ def getSummary(): #actually calculate summary
 		file_f.close()
 
 def getRR(): #set RR
-	ipLabel.pack_forget()
-	ipEntry.pack_forget()
-	opLabel.pack_forget()
-	opEntry.pack_forget()
-	buttonSummary.pack_forget()
-	buttonClear.pack_forget()
+	freshWindow()
 	redRatio.pack()
 	updateRR.pack()
 
@@ -283,12 +296,18 @@ def showSF(): #to be done
 
 def showHelp():
 	tkMessageBox.showinfo("Help", "Instructions:\n"
-								"1. Select input method. \n2. Select reduction ratio(% summary for text)\n 3."
+								"1. Select input method. \n2. Select reduction ratio(size of summary)\n 3."
 								"Generate Summary.")
 
 def contact():
 	tkMessageBox.showinfo("About us", "All rights reserved\nUse of application comes with no guarantee."
 									"\nInfo at: https://github.com/varunchitale")
+
+def clear():
+	ipEntry.delete(1.0, END)
+	opEntry.delete(1.0, END)
+	wSearchEntry.delete(1.0,END)
+
 
 
 #Main GUI begins
@@ -299,7 +318,7 @@ width = root.winfo_screenwidth()
 height = root.winfo_screenheight()
 x = (width / 2) - (800 / 2)
 y = (height / 2) - (650 / 2)
-root.resizable(width=False, height=False)
+root.resizable(width=False, height=True)
 root.geometry('%dx%d+%d+%d' % (800, 600, x, y))
 
 #Menu Bar with all its elements
@@ -360,26 +379,27 @@ helpmenu.add_command(label="Feedback", command=contact)
 #define elements
 redRatio = Scale(root, from_=1, to=99, length=300, orient=HORIZONTAL)
 
-redRatio.set(random.randint(1,99))
+redRatio.set(random.randint(5,65))
 logLabel = Label(root, text="Log: ")
 ipLabel = Label(root, text="Input Text: ")
 ipEntry = Text(root, wrap=WORD, width=80, height=15)
 opLabel = Label(root, text="Summary: ")
 opEntry = Text(root, wrap=WORD, width=80, height=15, fg='#404247', bg='#c8cace')
+wordCountEntry = Label(root, width=18, height=1, fg="#56313a")
 wSearchEntry= Text(root, width=80, height=1)
 wikiQLabel = Label(root, text="Enter Search Query")
 buttonWiki = Button(root, text="Search", command=wikiSearch)
 buttonWeb = Button(root, text="Search", command=displayWeb)
-buttonSummary = Button(root, height=2, width=15, text="Generate Summary", command=getSummary, relief="groove")
+buttonSummary = Button(root, height=2, width=15, text="Generate Summary", font=(10), command=getSummary, relief="groove")
 buttonSummary.config()
 buttonSave = Button(root,text="Save to File", command= updateSW)
-buttonClear = Button(root, text="Clear screen", command=freshWindow, relief='groove')
+buttonClear = Button(root, text="Clear", command=clear, relief='groove')
 updateRR= Button(root, text="Update Reduction Ratio", command=freshWindow)
 
 #end of definitions
 
 freshWindow()
-
+packIP()
 
 root.config(menu=menubar)
 
