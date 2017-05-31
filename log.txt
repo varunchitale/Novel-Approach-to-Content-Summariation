@@ -1128,3 +1128,91 @@ Time taken: 1.850910 secs
 Input length: 33130	Summary length: 27446
 Stemming: 0	Short Forms: 0	Reduction Ratio: 50 percent	Model: 1 
 Time taken: 10.438008 secs
+
+Input length: 34	Summary length: 30
+Stemming: 0	Short Forms: 0	Reduction Ratio: 99 percent	Model: 2 
+Time taken: 0.043718 secs
+
+Input length: 99991	Summary length: 69774
+Stemming: 0	Short Forms: 0	Reduction Ratio: 57 percent	Model: 2 
+Time taken: 22.248671 secs
+
+Input length: 99991	Summary length: 85770
+Stemming: 0	Short Forms: 0	Reduction Ratio: 57 percent	Model: 1 
+Time taken: 109.520310 secs
+
+Input length: 91398	Summary length: 77332
+Stemming: 0	Short Forms: 0	Reduction Ratio: 57 percent	Model: 1 
+Time taken: 94.832845 secs
+
+Input length: 91398	Summary length: 69928
+Stemming: 0	Short Forms: 0	Reduction Ratio: 57 percent	Model: 2 
+Time taken: 15.115628 secs
+
+Input length: 90271	Summary length: 57898
+Stemming: 0	Short Forms: 0	Reduction Ratio: 40 percent	Model: 2 
+Time taken: 14.131206 secs
+
+Input length: 90271	Summary length: 74702
+Stemming: 0	Short Forms: 0	Reduction Ratio: 40 percent	Model: 1 
+Time taken: 92.332802 secs
+
+Input length: 105752	Summary length: 42216
+Stemming: 0	Short Forms: 0	Reduction Ratio: 29 percent	Model: 2 
+Time taken: 19.162863 secs
+
+Input length: 90270	Summary length: 54283
+Stemming: 0	Short Forms: 0	Reduction Ratio: 34 percent	Model: 2 
+Time taken: 14.105348 secs
+
+Input length: 802	Summary length: 674
+Stemming: 0	Short Forms: 0	Reduction Ratio: 60 percent	Model: 2 
+Time taken: 0.031269 secs
+
+Input length: 802	Summary length: 403
+Stemming: 0	Short Forms: 0	Reduction Ratio: 41 percent	Model: 2 
+Time taken: 0.013229 secs
+
+Input length: 802	Summary length: 674
+Stemming: 0	Short Forms: 0	Reduction Ratio: 58 percent	Model: 2 
+Time taken: 0.027601 secs
+
+Input length: 802	Summary length: 323
+Stemming: 0	Short Forms: 0	Reduction Ratio: 33 percent	Model: 2 
+Time taken: 0.026845 secs
+
+Input length: 802	Summary length: 142
+Stemming: 0	Short Forms: 0	Reduction Ratio: 12 percent	Model: 2 
+Time taken: 0.013448 secs
+
+Input length: 802	Summary length: 674
+Stemming: 0	Short Forms: 0	Reduction Ratio: 54 percent	Model: 2 
+Time taken: 0.030686 secs
+
+Input length: 802	Summary length: 323
+Stemming: 0	Short Forms: 0	Reduction Ratio: 22 percent	Model: 2 
+Time taken: 0.031902 secs
+
+Input length: 802	Summary length: 142
+Stemming: 0	Short Forms: 0	Reduction Ratio: 14 percent	Model: 2 
+Time taken: 0.032422 secs
+
+Input length: 802	Summary length: 323
+Stemming: 0	Short Forms: 0	Reduction Ratio: 33 percent	Model: 2 
+Time taken: 0.031585 secs
+
+Input length: 802	Summary length: 323
+Stemming: 0	Short Forms: 0	Reduction Ratio: 25 percent	Model: 2 
+Time taken: 0.026398 secs
+
+Input length: 802	Summary length: 403
+Stemming: 0	Short Forms: 0	Reduction Ratio: 39 percent	Model: 2 
+Time taken: 0.024473 secs
+
+Input length: 802	Summary length: 403
+Stemming: 0	Short Forms: 0	Reduction Ratio: 35 percent	Model: 2 
+Time taken: 0.010027 secs
+
+Input length: 802	Summary length: 323
+Stemming: 0	Short Forms: 0	Reduction Ratio: 28 percent	Model: 2 
+Time taken: 0.009589 secs
