@@ -15,6 +15,8 @@ import modelVC,cosine
 import requests #for reading web data
 import random
 import os
+import pdf2text
+
 
 opTA=""
 opPA=""
@@ -34,7 +36,7 @@ def freshWindow(): #clear GUI
 	wordCountEntry.config(text='-')
 	opEntry.pack_forget()
 	redRatio.pack_forget()
-	updateRR.pack_forget()
+	buttonupdateRR.pack_forget()
 	wikiQLabel.pack_forget()
 	wSearchEntry.pack_forget()
 	buttonWiki.pack_forget()
@@ -143,6 +145,13 @@ def getInput2(): #wikipedia search entry
 	wSearchEntry.pack()
 	buttonWiki.pack()
 
+def getPdf():
+	freshWindow()
+	packIP()
+	filename = tkFileDialog.askopenfilename()
+	text=pdf2text.convert(filename,pages=None)
+	ipEntry.insert(INSERT, text)
+
 def getPText(): #paste text
 	freshWindow()
 	packIP()
@@ -187,7 +196,7 @@ def displayWeb(): #paste web search to ip box
 	#print text	
 	ipEntry.insert(INSERT,"Loading...")
 	ipEntry.delete(1.0, END)
-	ipEntry.insert(INSERT, text.strip())
+	ipEntry.insert(INSERT, text.rstrip(' '))
 	wikiQLabel.pack_forget()
 	wSearchEntry.pack_forget()
 	buttonWiki.pack_forget()
@@ -294,7 +303,7 @@ def getSummary(): #actually calculate summary
 def getRR(): #set RR
 	freshWindow()
 	redRatio.pack()
-	updateRR.pack()
+	buttonupdateRR.pack()
 
 def updateSW(): #stopWords.txt editing
 	with open("stopWords.txt", 'w+') as f:
@@ -325,12 +334,18 @@ def showSF(): #to be done
 def showHelp():
 	tkMessageBox.showinfo("Help", "Instructions:\n"
 								"1. Select suitable input method. \n\n2. Select reduction ratio(size of summary)\n\n3."
+								"Select preferences\n\n4."
 								"Generate Summary.")
 
-def contact():
-	tkMessageBox.showinfo("About us", "All rights reserved\n"
-									"\nInfo and updates at: https://github.com/varunchitale")
+def about():
+	tkMessageBox.showinfo("About us", "Version: 13.0.2\n"
+									"The Personalized Content Summary Generator"
+									"\n\nDeveloped by:\n"
+									"Varun Chitale\nAnandita Bodas\nChaitanya Deshpande\nUtkarsh Havle")
 
+def feedback():
+	tkMessageBox.showinfo("Feedback", "All rights reserved\n"
+									"\nInfo and updates at: https://github.com/varunchitale")
 def clear():
 	ipEntry.delete(1.0, END)
 	opEntry.delete(1.0, END)
@@ -368,7 +383,8 @@ sourceMenu.add_command(label="Web Search", command=getInput5)
 sourceMenu.add_command(label="Wikipedia Search", command=getInput2)
 sourceMenu.add_separator()
 sourceMenu.add_command(label="Paste Text", command=getPText)
-sourceMenu.add_command(label="Read image(JPG/JPEG)*", command=getImage)
+sourceMenu.add_command(label="Read text from PDF*", command=getPdf)
+sourceMenu.add_command(label="Read text from image(JPG/JPEG)*", command=getImage)
 
 var1 = IntVar() #stem
 var2 = IntVar() #SF
@@ -402,9 +418,9 @@ editmenu.add_command(label="Edit Short Forms", command=showSF)
 helpmenu = Menu(menubar, tearoff=0)
 menubar.add_cascade(label="Help", menu=helpmenu)
 helpmenu.add_command(label="Help", command=showHelp)
-helpmenu.add_command(label="About", command=contact)
+helpmenu.add_command(label="About", command=about)
 helpmenu.add_separator()
-helpmenu.add_command(label="Feedback", command=contact)
+helpmenu.add_command(label="Feedback", command=feedback)
 #Menu Bar ends
 
 #define elements
@@ -425,7 +441,7 @@ buttonSummary = Button(root, height=2, width=15, text="Generate Summary", font=(
 buttonSummary.config()
 buttonSave = Button(root,text="Save to File", command= updateSW)
 buttonClear = Button(root, text="Clear", command=clear, relief='groove')
-updateRR = Button(root, text="Update Reduction Ratio", command=freshWindow)
+buttonupdateRR = Button(root, text="Update Reduction Ratio", command=newWin)
 
 impWordsLabel = Label(root, text="Important Words (that should carry more weight)")
 impWords = Text(root,wrap=WORD, fg='#2ab72c')
