@@ -20,7 +20,6 @@ opTA=""
 opPA=""
 endTime1=0
 endTime2=0
-heavyWords=""
 
 def freshWindow(): #clear GUI
 	ipEntry.delete(1.0, END)
@@ -42,11 +41,7 @@ def freshWindow(): #clear GUI
 	opEntry.delete(1.0,END)
 	logLabel.pack_forget()
 	buttonClear.pack_forget()
-	impWords.pack_forget()
-	impWordsLabel.pack_forget()
-	buttonImpWords.pack_forget()
 	
-
 
 def packIP(): #pack input area
 	ipLabel.pack()
@@ -194,19 +189,6 @@ def displayWeb(): #paste web search to ip box
 	buttonWeb.pack_forget()
 	buttonClear.pack()
 
-def impWordsRoutine():
-	global heavyWords
-	heavyWords = impWords.get("1.0", END)
-	newWin()
-	#print heavyWords
-
-def updateImpWords():
-	freshWindow()
-	impWordsLabel.pack()
-	impWords.pack()
-	buttonImpWords.pack()
-	
-
 def getSummary(): #actually calculate summary
 	opLabel.pack_forget()
 	opEntry.pack_forget()
@@ -250,8 +232,7 @@ def getSummary(): #actually calculate summary
 		opTA=op
 	elif var6.get()==2:
 		m = modelVC.summary()
-		global heavyWords
-		op = m.summarize(text,red_ra,heavyWords)
+		op = m.summarize(text,red_ra)
 		global opPA
 		opPA=op
 
@@ -324,7 +305,7 @@ def showSF(): #to be done
 
 def showHelp():
 	tkMessageBox.showinfo("Help", "Instructions:\n"
-								"1. Select suitable input method. \n\n2. Select reduction ratio(size of summary)\n\n3."
+								"1. Select suitable input method. \n\n2. Select reduction ratio(size of summary)\n\n 3."
 								"Generate Summary.")
 
 def contact():
@@ -383,7 +364,6 @@ prefMenu.add_radiobutton(label="Proposed Algorithm", var=var6, value=2)
 #prefMenu.add_radiobutton(label="Algorithm 3", var=var6, value=3)
 prefMenu.add_separator()
 prefMenu.add_command(label="Set Reduction ratio", command=getRR)
-prefMenu.add_command(label="Define important words", command=updateImpWords)
 prefMenu.add_separator()
 #prefMenu.add_checkbutton(label="Concurrency*", var=var5)
 prefMenu.add_checkbutton(label="Use Stemming", var=var1)
@@ -392,12 +372,10 @@ prefMenu.add_separator()
 prefMenu.add_checkbutton(label="Display time stats", var=var4)
 prefMenu.add_checkbutton(label="Write to file", var=var3)
 
-
 editmenu = Menu(menubar, tearoff=0)
 menubar.add_cascade(label="Personalize", menu=editmenu)
 editmenu.add_command(label="Edit Stop Words", command=showSW)
 editmenu.add_command(label="Edit Short Forms", command=showSF)
-
 
 helpmenu = Menu(menubar, tearoff=0)
 menubar.add_cascade(label="Help", menu=helpmenu)
@@ -425,11 +403,7 @@ buttonSummary = Button(root, height=2, width=15, text="Generate Summary", font=(
 buttonSummary.config()
 buttonSave = Button(root,text="Save to File", command= updateSW)
 buttonClear = Button(root, text="Clear", command=clear, relief='groove')
-updateRR = Button(root, text="Update Reduction Ratio", command=freshWindow)
-
-impWordsLabel = Label(root, text="Important Words (that should carry more weight)")
-impWords = Text(root,wrap=WORD, fg='#2ab72c')
-buttonImpWords = Button(root, text="Update List", command=impWordsRoutine)
+updateRR= Button(root, text="Update Reduction Ratio", command=freshWindow)
 
 #end of definitions
 

@@ -2,6 +2,7 @@ import cosine
 import nltk
 import numpy as np
 from threading import Thread
+import threading
 
 class summary:
 
@@ -10,17 +11,22 @@ class summary:
 	weightGraph=[]
 	
 
-	def buildGraph(self,sentences,i):
+	def buildGraph(self,sentences,i,tImpWord):
 		j=0
 		global n,weightGraph
-				
+		#print threading.currentThread()		
 		for j in range (i+1,n):
 			weightGraph[i][j]=cosine.cosineS(sentences[i],sentences[j])
+			
+		if tImpWord[i]:
+			#print "Before adding " ,weightGraph[i][j]
+			weightGraph[i][j] += 0.1*tImpWord[i]
+			#print "After adding " ,weightGraph[i][j]	
 
 		weightGraph[i][i]=0.0
 
 
-	def summarize(self,text,reductionRatio):
+	def summarize(self,text,reductionRatio,heavywords):
 		global n,selectedSent
 		
 		sentences=text.split('.')
@@ -39,12 +45,21 @@ class summary:
 		with open("stopWords.txt") as f:
 		    stopWords=f.read().split()
 		
+
+
 		t=["" for i in range(n)]
-			
+		tImpWord=[0 for i in range(n)]
+
+		heavywords=heavywords.split()
+		
 		for i in range(n):
 			t[i]=sentences[i].split(" ")	
-			
 			sentences1[i]=' '.join(word for word in t[i] if word not in stopWords)+'.'		
+			for word in heavywords:
+				if word in t[i]:
+					tImpWord[i] += 1
+					#print tImpWord[i] 
+					#print "heavy Word present, Added value to sent no: ",i
 		
 		#print "Sentences:\n"
 		#print sentences
@@ -52,12 +67,15 @@ class summary:
 		global weightGraph
 		weightGraph=[[0 for x in range(n)] for y in range(n)]
 
+		tCount=[0 for i in range(0,n)]
 
 		#Expoliting MultiThreading
 		for i in range (0,n):
-			#self.buildGraph(sentences,i)
-			t=Thread(target=self.buildGraph, args=(sentences1,i,))
+			#Sequential:
+			#self.buildGraph(sentences,i,tImpWord)
+			t=Thread(target=self.buildGraph, args=(sentences1,i,tImpWord,))
 			t.start()
+												
 		t.join()
 
 		#print "Matrix of weigh graph:\n"

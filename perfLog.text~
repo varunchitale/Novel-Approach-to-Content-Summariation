@@ -24,6 +24,7 @@ Similarity: 88.90
 Time(for TR): 109.52 
 Time(for PA): 22.25 
 
+
 Input length: 91398
 Reduction Ratio: 57
 Similarity: 93.60
@@ -41,10 +42,3 @@ Reduction Ratio: 29
 Similarity: 71.57
 Time(for TR): 0.06 
 Time(for PA): 0.01 
-
-
-Input length: 802
-Reduction Ratio: 55
-Similarity: 74.72
-Time(for TR): 0.06 
-Time(for PA): 0.02 
