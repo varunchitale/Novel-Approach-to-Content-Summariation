@@ -1396,3 +1396,59 @@ Time taken: 7.409232 secs
 Input length: 28280	Summary length: 11434
 Stemming: 0	Short Forms: 0	Reduction Ratio: 44 percent	Model: 2 
 Time taken: 1.327166 secs
+
+Input length: 67	Summary length: 0
+Stemming: 0	Short Forms: 0	Reduction Ratio: 19 percent	Model: 1 
+Time taken: 0.007122 secs
+
+Input length: 28280	Summary length: 9099
+Stemming: 0	Short Forms: 0	Reduction Ratio: 34 percent	Model: 2 
+Time taken: 1.359965 secs
+
+Input length: 28280	Summary length: 11024
+Stemming: 0	Short Forms: 0	Reduction Ratio: 34 percent	Model: 1 
+Time taken: 7.433284 secs
+
+Input length: 2849	Summary length: 1125
+Stemming: 0	Short Forms: 0	Reduction Ratio: 34 percent	Model: 1 
+Time taken: 0.180723 secs
+
+Input length: 2849	Summary length: 918
+Stemming: 0	Short Forms: 0	Reduction Ratio: 34 percent	Model: 2 
+Time taken: 0.079245 secs
+
+Input length: 28353	Summary length: 12940
+Stemming: 0	Short Forms: 0	Reduction Ratio: 49 percent	Model: 2 
+Time taken: 1.360603 secs
+
+Input length: 997	Summary length: 523
+Stemming: 0	Short Forms: 0	Reduction Ratio: 57 percent	Model: 2 
+Time taken: 0.030841 secs
+
+Input length: 88	Summary length: 75
+Stemming: 0	Short Forms: 0	Reduction Ratio: 57 percent	Model: 2 
+Time taken: 0.004327 secs
+
+Input length: 88	Summary length: 39
+Stemming: 0	Short Forms: 0	Reduction Ratio: 26 percent	Model: 2 
+Time taken: 0.004028 secs
+
+Input length: 20	Summary length: 14
+Stemming: 0	Short Forms: 0	Reduction Ratio: 34 percent	Model: 2 
+Time taken: 0.004481 secs
+
+Input length: 10	Summary length: 5
+Stemming: 0	Short Forms: 0	Reduction Ratio: 34 percent	Model: 2 
+Time taken: 0.001855 secs
+
+Input length: 10	Summary length: 0
+Stemming: 0	Short Forms: 0	Reduction Ratio: 34 percent	Model: 1 
+Time taken: 0.001715 secs
+
+Input length: 10	Summary length: 5
+Stemming: 0	Short Forms: 0	Reduction Ratio: 34 percent	Model: 2 
+Time taken: 0.001371 secs
+
+Input length: 997	Summary length: 403
+Stemming: 0	Short Forms: 0	Reduction Ratio: 44 percent	Model: 2 
+Time taken: 0.030892 secs
